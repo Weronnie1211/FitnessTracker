@@ -13,22 +13,18 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "Health_Metrics")
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED) // Lombok: "Zrób pusty konstruktor dla bazy"
-@ToString // Lombok: "Zrób metodę do ładnego wyświetlania tekstu"
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@ToString
 public class HealthMetrics {
 
-    @Id // To jest nasz główny klucz (ID)
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Baza sama nadaje numery: 1, 2, 3...
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Nullable
     private Long id;
 
-    // RELACJA W JPA:
-    // Na schemacie idzie kreska od Users do Health_Metrics.
-    // To relacja Wiele-do-Jednego (@ManyToOne), bo jeden użytkownik (User)
-    // może mieć wiele wpisów z pomiarami zdrowia.
 
 
-    @Column(name = "date", nullable = false) // nullable = false oznacza, że to pole nie może być puste
+    @Column(name = "date", nullable = false)
     private LocalDate date;
 
     @Column(name = "weight")
